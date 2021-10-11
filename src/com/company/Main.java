@@ -7,32 +7,27 @@ public class Main{
         Scanner input = new Scanner(System.in);
         Scanner numberScan = new Scanner(new File("PhoneNumbers.txt"));
         Scanner nameScan = new Scanner(new File("Names.txt"));
-        int[] phonenumbers = new int[10];
-        String[] names = new String[10];
+        int[] phonenumbers;
+        String[] names;
         phonenumbers = readNumbers(numberScan);
         names = readNames(nameScan);
         int answer = 5;
         while(answer != 4){
             System.out.println("Enter 1 for new entry \n2 for show list \n3 for delete entry \n4 to quit");
             answer = input.nextInt();
-            switch(answer){
-                case 1:
+            switch (answer) {
+                case 1 -> {
                     brugerInputNames(names, input);
                     brugerInputNumber(phonenumbers, input);
                     writeToFile(phonenumbers, names);
-                    break;
-                case 2:
-                    showList(phonenumbers, names);
-                    break;
-                case 3:
-                    deleteEntry(phonenumbers, names, input);
-                    break;
-                default:
-                    System.out.print("BuFu");
+                }
+                case 2 -> showList(phonenumbers, names);
+                case 3 -> deleteEntry(phonenumbers, names, input);
+                default -> System.out.print("Bye Bye");
             }
         }
     }
-    public static int[] readNumbers(Scanner numberScan)throws FileNotFoundException{
+    public static int[] readNumbers(Scanner numberScan) {
         int[] a = new int[10];
         int i = 0;
         String line = numberScan.nextLine();
@@ -43,7 +38,7 @@ public class Main{
         }
         return a;
     }
-    public static String[] readNames(Scanner nameScan)throws FileNotFoundException{
+    public static String[] readNames(Scanner nameScan) {
         String[] b = new String[10];
         int i = 0;
         String line = nameScan.nextLine();
@@ -77,8 +72,8 @@ public class Main{
         return phone;
     }
     public static void writeToFile(int[] phone, String[] names)throws FileNotFoundException{
-        PrintStream phonenumbers = new PrintStream(new File("PhoneNumbers.txt"));
-        PrintStream namelist = new PrintStream(new File("Names.txt"));
+        PrintStream phonenumbers = new PrintStream("PhoneNumbers.txt");
+        PrintStream namelist = new PrintStream("Names.txt");
         String outputPhone = "";
         for(int i = 0; i < phone.length; i++){
             outputPhone += phone[i] + " ";
