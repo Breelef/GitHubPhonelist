@@ -23,7 +23,7 @@ public class Main{
                 }
                 case 2 -> showList(phonenumbers, names);
                 case 3 -> deleteEntry(phonenumbers, names, input);
-                default -> System.out.print("Bye Bye");
+                default -> System.out.print("Bye Bye 2");
             }
         }
     }
